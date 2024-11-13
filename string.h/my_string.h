@@ -3,11 +3,13 @@
 
 #include <stddef.h>
 
-size_t my_strlen(char str[]);
+int __strlen(const char *source);
 
-int my_strcpy(char *dest, const char *source);
+int __strcpy(char *dest, const char *source);
 
-int _my_strcpy(char *dest, const char *source, size_t max_size);
+int __strncpy(char *dest, const char *source, size_t max_size);
+
+int __strcmp(const char *str1, const char *str2);
 
 
-#endif
+#endif 

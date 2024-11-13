@@ -1,15 +1,16 @@
 #include "my_string.h"
 #include <stdio.h>
 #include <stddef.h>
+#include "my_string.h"
 
-size_t my_strlen(char *source)
+
+int __strlen(const char *source)
 {
     /* Check for null pointer */
     if(source == NULL)
     {
         return 0; /* return 0 indicating NULL string */
     }
-
     int len = 0;
     int i = 0;
     char current_char = 0;
@@ -23,7 +24,7 @@ size_t my_strlen(char *source)
     return len;  /* return the length of the string */
 }
 
-int my_strcpy(char *dest, const char *source)
+int __strcpy(char *dest, const char *source)
 {
     if(dest == NULL || source == NULL)
     {
@@ -46,7 +47,7 @@ int my_strcpy(char *dest, const char *source)
 }
 
 
-int _my_strcpy(char *dest, const char *source, size_t max_size)
+int __strncpy(char *dest, const char *source, size_t max_size)
 {
     if(dest == NULL || source == NULL)
     {
@@ -66,4 +67,34 @@ int _my_strcpy(char *dest, const char *source, size_t max_size)
     *(dest+i) = '\0';  /* add null terminator to the end */
 
     return 0;  /* return 0 if everything is fine */
+}
+
+
+int __strcmp(const char *str1, const char *str2)
+{
+    /* check if func arguments are not null */
+    if(str1 == NULL || str2 == NULL)
+    {
+        return -1; /* return -1 to indicate error */
+    }
+    
+    unsigned int str1_len = __strlen(str1);
+    unsigned int str2_len = __strlen(str2);
+    /* check if str1 and str2 are equal in size */
+    if(str1_len != str2_len)
+    {
+        return 1; /* return 1 to indicate strings are not equal */
+    }
+
+    unsigned int i;
+    /* iterate through each character */
+    for(i = 0; i < str1_len; i++)
+    {
+        /* compare characters of str1 and str2 */
+        if(str1[i] != str2[i])
+        {
+            return 1;
+        }
+    }
+    return 0;  /* return 0 to indicate strings are equal */
 }
