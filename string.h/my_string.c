@@ -98,3 +98,33 @@ int __strcmp(const char *str1, const char *str2)
     }
     return 0;  /* return 0 to indicate strings are equal */
 }
+
+
+int __strncmp(const char *str1, const char *str2, size_t n)
+{
+    /* check for NULL */
+    if(str1 == NULL || str2 == NULL)
+    {
+        return -1; /* return -1 if either str1 or str2 is NULL */
+    }
+    unsigned int i = 0;
+    /* iterate through str1 and str2 until i >= n */
+    for(i = 0; i < n; i++)
+    {
+        /* check if both str1 and str2 characters are null termiantors */
+        if(str1[i] == '\0' && str2[i] == '\0')
+        {
+            return 0; 
+        }
+        /* check if either str1 or str2 character is null terminator */
+        if(str1[i] == '\0' || str2[i] == '\0')
+        {
+            return 1; /* return 1 if str1 and str2 are not equal */
+        }
+        if(str1[i] != str2[i])
+        {
+            return 1; /* return 1 if str1 and str2 are not equal */
+        }
+    }
+    return 0; /* return 0 if both str1 and str2 are equal */
+}
