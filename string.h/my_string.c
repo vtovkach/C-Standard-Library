@@ -128,3 +128,30 @@ int __strncmp(const char *str1, const char *str2, size_t n)
     }
     return 0; /* return 0 if both str1 and str2 are equal */
 }
+
+int __strcat(char *dest, const char *source)
+{ 
+    /* validate function arguments */
+    if(dest == NULL || source == NULL)
+    {
+        return -1; /* return 0 if destination string or source strings is NULL */
+    }
+    /* the last position in the destination string */
+    unsigned int dest_pos = __strlen(dest); 
+    /* source string iterator */
+    unsigned int src_pos = 0;
+    /* current char */
+    char current_char = source[src_pos];
+    while(current_char != '\0')
+    {
+        dest[dest_pos] = current_char; 
+        dest_pos++;
+        src_pos++;
+        current_char = source[src_pos];
+    }
+    /* terminate the string */
+    dest[dest_pos] = '\0';
+    return 0; /* code 0 indicates successful function completion */
+}
+
+// manage pointer arithmetic instead of using iterators in future versions 
