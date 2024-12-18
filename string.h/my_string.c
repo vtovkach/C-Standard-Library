@@ -144,5 +144,23 @@ int __strcat(char *dest, const char *source)
         source++;
     }
     *dest = '\0';
-    return 0; /* code 0 indicates successful function completion */
+    return 0;   /* code 0 indicates successful function completion */
+}
+
+int __strncat(char *dest, const char *source, size_t n)
+{   
+    /* validate function arguments */
+    if(dest == NULL || source ==  NULL) { return -1; }
+    if(n == 0) { return 1; }
+    dest+= __strlen(dest);
+    unsigned int i = 0; 
+    while(i < n && *source != '\0')
+    {
+        *dest = *source;
+        dest++;
+        source++;
+        i++;
+    }
+    *dest = '\0';
+    return 0;   /* code 0 indicates successful function completion */
 }
