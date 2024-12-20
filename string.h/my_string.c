@@ -134,7 +134,7 @@ int __strcat(char *dest, const char *source)
     /* validate function arguments */
     if(dest == NULL || source == NULL)
     {
-        return -1; /* return 0 if destination string or source strings is NULL */
+        return 1; /* return 0 if destination string or source strings is NULL */
     }
     dest+= __strlen(dest);
     while(*source != '\0')
@@ -150,8 +150,8 @@ int __strcat(char *dest, const char *source)
 int __strncat(char *dest, const char *source, size_t n)
 {   
     /* validate function arguments */
-    if(dest == NULL || source ==  NULL) { return -1; }
-    if(n == 0) { return 1; }
+    if(dest == NULL || source ==  NULL) { return 1; }
+    if(n == 0) { return 2; }
     dest+= __strlen(dest);
     unsigned int i = 0; 
     while(i < n && *source != '\0')
@@ -163,4 +163,42 @@ int __strncat(char *dest, const char *source, size_t n)
     }
     *dest = '\0';
     return 0;   /* code 0 indicates successful function completion */
+}
+
+void __memset(void *ptr, int value, size_t n)
+{ 
+    unsigned char *bytePtr = (unsigned char *)ptr; 
+    unsigned char byteValue = (unsigned char)value; 
+    while(n--)
+    {
+        *bytePtr = byteValue;
+        bytePtr++;
+    }
+}
+
+char *__strchr(const char *str, int c)
+{
+    while(*str != '\0')
+    {
+        if(*str == (char)c)
+        {
+            return (char *) str;
+        }
+        str++;
+    }
+    return NULL;
+}
+
+char *__strrchr(const char *str, int c)
+{
+    char *character = NULL; 
+    while(*str != '\0')
+    {
+        if(*str == (char)c)
+        {
+            character = (char *)str;
+        }
+        str++;
+    }
+    return character;
 }
