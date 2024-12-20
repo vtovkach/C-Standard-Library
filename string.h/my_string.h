@@ -3,7 +3,6 @@
 
 #include <stddef.h>
 
-
 int __strlen(const char *source);
 
 int __strcpy(char *dest, const char *source);
@@ -18,5 +17,12 @@ int __strcat(char *dest, const char *source);
 
 int __strncat(char *dest, const char *source, size_t n);     
 
+void __memset(void *ptr, int value, size_t n);
+
+char *__strchr(const char *str, int c);    
+
+char *__strrchr(const char *str, int c);  
+
+char *__strstr(const char *haystack, const char *needle);   /* TODO */
 
 #endif 
