@@ -202,3 +202,40 @@ char *__strrchr(const char *str, int c)
     }
     return character;
 }
+
+char *__strstr(const char *source, const char *substr)
+{
+    if(*substr == '\0') return (char *)source;
+    char *substring_ptr;
+    char *copy_substr = (char *)substr;
+    while(*source != '\0')
+    {
+        if(substring_ptr != NULL && *copy_substr == '\0')
+        {
+            break; 
+        }
+        else if(*source == *copy_substr)
+        {   
+            if(substring_ptr == NULL)
+            {
+                substring_ptr= (char *)source;
+            }
+            source++;
+            copy_substr++;
+        }
+        else
+        {
+            copy_substr = (char *)substr;
+            if(substring_ptr == NULL)
+            {
+                source++;
+            }
+            substring_ptr = NULL;
+        }
+    }
+    if(*copy_substr == '\0')
+    {
+        return substring_ptr;
+    }
+    return NULL;
+}
