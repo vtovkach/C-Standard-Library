@@ -23,6 +23,6 @@ char *__strchr(const char *str, int c);
 
 char *__strrchr(const char *str, int c);  
 
-char *__strstr(const char *haystack, const char *needle);   /* TODO */
+char *__strstr(const char *source, const char *substr);  
 
 #endif 
