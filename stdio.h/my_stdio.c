@@ -27,7 +27,7 @@ static void covertIntToStr(int value, char *buffer)
         value = quotient;
     }
 
-    
+    // reverse the order characters
 }
 
 void my_printf(char const *string, ...)
