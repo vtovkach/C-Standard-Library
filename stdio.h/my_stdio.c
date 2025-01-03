@@ -1,37 +1,65 @@
 #include <unistd.h>
 #include <stdarg.h>
+#include <stdio.h>
 
 #include "my_stdio.h"
 
+static void covertIntToStr(int value, char *buffer)
+{
+    const int BASE_INTEGER_ASCII = 48;
+    int quotient;
+    int remainder;
+    char tempChar;
+
+    while(value > 0)
+    {
+        quotient = value / 10;
+        remainder = value % 10;
+        for(int i = 0; i < 10; i++)
+        {
+            if(remainder == i)
+            {
+                tempChar = BASE_INTEGER_ASCII + i;
+            }
+        }
+        *buffer = tempChar;
+        buffer++;
+        value = quotient;
+    }
+
+    
+}
 
 void my_printf(char const *string, ...)
 {
-    va_list arg;
-    int args = 0;
-    int i = 0;
-    char current_char; 
-    
-    current_char = string[i];
-    while(current_char != '\0')
-    {
-        if(current_char == '%')
-        {
-            args++;
-        }
-        i++;
-    }
+
+    char str[100];
+
+    covertIntToStr(1233232, str);
 
     
+    printf("%s\n", str);
+
+
+
     /*
-    i = 0;
-    current_char = string[i];
-    while(*string != '\0')
+    va_list args;
+
+    va_start(args, string);
+    while(*(string++) != '\0')
     {
-        
+        if(*string == '%')
+        {
+            string++;
+            if(*string == 'd')
+            {
+                
+            }
+        }
     }
     */
-    
 }
+
 
 
 /*
